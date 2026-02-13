@@ -234,7 +234,7 @@
 
     .service-cards {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
     }
 
@@ -362,6 +362,10 @@
     }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1200px) {
+      .service-cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
     @media (max-width: 1024px) {
       .service-cards { grid-template-columns: repeat(2, 1fr); }
     }
@@ -458,6 +462,22 @@
       <p class="description"><strong>Results in:</strong> Individual staff or team proof points + systems for continual educator-led AI innovation</p>
       <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
         <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">$25,000</p>
+      </div>
+    </div>
+
+    <!-- Custom App Building -->
+    <div class="service-card" style="background: #f97316;">
+      <svg class="service-card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="8" width="40" height="40" rx="4" stroke="#fff" stroke-width="3" fill="none"/>
+        <rect x="16" y="16" width="10" height="10" rx="2" fill="#fff"/>
+        <rect x="30" y="16" width="10" height="10" rx="2" fill="#fff"/>
+        <rect x="16" y="30" width="10" height="10" rx="2" fill="#fff"/>
+        <rect x="30" y="30" width="10" height="10" rx="2" fill="#fff"/>
+      </svg>
+      <h3>Custom App Building</h3>
+      <p class="description" style="margin-bottom: 12px;">Design, launch, and implementation support for fully custom apps based on specific context</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">Custom Quote</p>
       </div>
     </div>
 
