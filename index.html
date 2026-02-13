@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlab — Pricing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky-50: #f0f9ff;
+      --sky-100: #e0f2fe;
+      --sky-200: #bae6fd;
+      --sky-400: #38bdf8;
+      --sky-500: #0EA5E9;
+      --sky-600: #0284c7;
+      --sky-700: #0369a1;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --emerald-400: #34d399;
+      --emerald-500: #10b981;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      --rose-500: #f43f5e;
+      --cream: #fef9f0;
+      --card-dark: #1a2332;
+      --card-dark-alt: #1e293b;
+    }
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: #fff;
+      color: var(--slate-800);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
+      text-align: center;
+      padding: 48px 24px 48px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      margin-bottom: 24px;
+    }
+
+    .logo svg { height: 28px; }
+
+    .header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    .header p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--slate-500);
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ─── COMPACT PRICING SECTION ─── */
+    .pricing-compact {
+      max-width: 900px;
+      margin: 0 auto 72px;
+      padding: 0 24px;
+    }
+
+    .pricing-compact h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--slate-900);
+    }
+
+    .pricing-compact {
+      margin: 0 auto 72px;
+    }
+
+    .pricing-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .tier-box {
+      background: var(--slate-50);
+      border: 2px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 12px 14px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .tier-box:hover {
+      border-color: var(--sky-400);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+    }
+
+    .tier-box.highlighted {
+      border-color: var(--sky-500);
+      background: var(--sky-50);
+    }
+
+    .tier-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .tier-header::after {
+      content: '';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.3s ease;
+    }
+
+    .tier-box:not(.collapsed) .tier-header::after {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .tier-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .tier-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--sky-600);
+      margin-bottom: 0;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .tier-price .small {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--slate-500);
+    }
+
+    .tier-expand {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .tier-box.collapsed .tier-expand {
+      max-height: 0;
+    }
+
+    .tier-divider {
+      height: 1px;
+      background: var(--slate-200);
+      margin: 6px 0;
+    }
+
+    .tier-details {
+      font-size: 11px;
+      color: var(--slate-600);
+      line-height: 1.3;
+    }
+
+    .tier-details > div {
+      margin: 2px 0;
+      text-align: center;
+    }
+
+    .tier-option {
+      font-size: 11px;
+      color: var(--slate-700);
+      margin: 3px 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    /* ─── SERVICE CARDS ─── */
+    .services-section {
+      max-width: 1400px;
+      margin: 0 auto 72px;
+      padding: 0 24px;
+    }
+
+    .services-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--slate-900);
+    }
+
+    .services-section .subtitle {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--slate-500);
+      text-align: center;
+      margin-bottom: 48px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card-dark);
+      border-radius: 20px;
+      padding: 32px 28px;
+      color: #fff;
+      transition: transform 0.2s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-card-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .service-card .description {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--slate-300);
+      line-height: 1.6;
+    }
+
+    .service-card .cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-family: 'Lexend', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: #fff;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .service-card .cta:hover {
+      border-color: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ─── FAQS ─── */
+    .faq-section {
+      max-width: 720px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+
+    .faq-section h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--slate-900);
+    }
+
+    .faq {
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq summary {
+      padding: 16px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--slate-800);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+
+    .faq summary::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq[open] summary::after { transform: rotate(180deg); }
+
+    .faq .answer {
+      padding: 0 20px 16px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--slate-500);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTNOTE ─── */
+    .footnote {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--slate-400);
+      padding: 0 24px 48px;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .service-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .header h1 { font-size: 28px; }
+      .pricing-tiers { grid-template-columns: 1fr; }
+      .service-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<div class="header">
+  <div class="logo">
+    <svg viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="22" font-family="Lexend" font-weight="700" font-size="24">
+        <tspan fill="#0EA5E9">P</tspan><tspan fill="#f43f5e">l</tspan><tspan fill="#f59e0b">a</tspan><tspan fill="#0EA5E9">y</tspan><tspan fill="#10b981">l</tspan><tspan fill="#0EA5E9">a</tspan><tspan fill="#f43f5e">b</tspan>
+      </text>
+    </svg>
+  </div>
+  <h1>AI Agency for Learning Organizations</h1>
+  <p>As a non-profit, Playlab provides AI-safe software and rigorous learning services to enable AI agency for all.</p>
+</div>
+
+<!-- ─── LEARNING SERVICES ─── -->
+<div class="services-section">
+  <h2>Learning Services</h2>
+  <p style="text-align: center; font-size: 13px; color: var(--slate-500); margin-bottom: 32px;">All prices estimated. See below for transparent pricing details.<br>All learning services require software licenses as outlined below.</p>
+  <div class="service-cards">
+
+    <!-- Adult AI Literacy -->
+    <div class="service-card">
+      <svg class="service-card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="24" height="24" rx="5" fill="#4fc96d"/>
+        <rect x="20" y="4" width="20" height="20" rx="5" fill="#4fc96d"/>
+        <circle cx="20" cy="36" r="10" fill="#4fc96d"/>
+        <rect x="36" y="28" width="16" height="16" rx="4" fill="#4fc96d"/>
+      </svg>
+      <h3>Adult AI Literacy</h3>
+      <p class="description" style="margin-bottom: 12px;">Train up staff/team on AI</p>
+      <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Hands-on, facilitated learning experiences (flexible format)</p>
+      <p class="description"><strong>Results in:</strong> Increased AI agency (knowledge, skills, outlook) + AI app showcase + organization AI foundation</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">$7,500</p>
+      </div>
+    </div>
+
+    <!-- Student AI Literacy -->
+    <div class="service-card">
+      <svg class="service-card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="4,28 16,6 28,28" fill="#f7cd1e"/>
+        <circle cx="36" cy="16" r="10" fill="#f7cd1e"/>
+        <polygon points="30,30 42,26 48,36 42,46 30,42" fill="#f7cd1e"/>
+      </svg>
+      <h3>Student AI Literacy</h3>
+      <p class="description" style="margin-bottom: 12px;">Bring AI learning to students</p>
+      <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Teacher training & student curriculum (multiple formats)</p>
+      <p class="description"><strong>Results in:</strong> Increased AI agency + shared discourse around AI + student app showcase</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">$10,000</p>
+      </div>
+    </div>
+
+    <!-- Targeted AI Adoption -->
+    <div class="service-card">
+      <svg class="service-card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="10" fill="#e156bc"/>
+        <circle cx="40" cy="16" r="10" fill="#e156bc"/>
+        <circle cx="28" cy="38" r="10" fill="#e156bc"/>
+        <circle cx="28" cy="22" r="6" fill="#e156bc"/>
+      </svg>
+      <h3>Targeted AI Adoption</h3>
+      <p class="description" style="margin-bottom: 12px;">Build shared, scalable AI solutions</p>
+      <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Year-long collaboration to design, co-build, and scale custom AI solutions for selected challenge areas</p>
+      <p class="description"><strong>Results in:</strong> Shared collection of custom AI applications + increased internal capacity to build independently</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">$25,000</p>
+      </div>
+    </div>
+
+    <!-- Culture of Innovation -->
+    <div class="service-card">
+      <svg class="service-card-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 44V16l20-12 20 12v28" stroke="#7ee5bb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="14" y="24" width="10" height="20" rx="2" fill="#7ee5bb"/>
+        <rect x="32" y="24" width="10" height="20" rx="2" fill="#7ee5bb"/>
+        <rect x="22" y="32" width="12" height="12" rx="2" fill="#7ee5bb"/>
+      </svg>
+      <h3>Culture of Innovation</h3>
+      <p class="description" style="margin-bottom: 12px;">Build culture and systems for ongoing AI innovation</p>
+      <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Year-long collaboration to establish culture for continual AI innovation</p>
+      <p class="description"><strong>Results in:</strong> Individual staff or team proof points + systems for continual educator-led AI innovation</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
+        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">$25,000</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── COMPACT PRICING ─── -->
+<div class="pricing-compact">
+  <h2>Software</h2>
+  <div class="pricing-tiers">
+
+    <!-- Team -->
+    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
+      <div class="tier-header">
+        <div class="tier-name">Team</div>
+        <div class="tier-price">$25<span class="small">/user/month</span></div>
+      </div>
+      <div class="tier-expand">
+        <div class="tier-divider"></div>
+        <div class="tier-details">
+          <div>1-10 users</div>
+          <div>Up to 200 students per user</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site -->
+    <div class="tier-box highlighted collapsed" onclick="this.classList.toggle('collapsed')">
+      <div class="tier-header">
+        <div class="tier-name">Site</div>
+        <div class="tier-price">$1,500<span class="small">/site/year</span></div>
+      </div>
+      <div class="tier-expand">
+        <div class="tier-divider"></div>
+        <div class="tier-details">
+          <div>All staff</div>
+          <div>No students</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- System -->
+    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
+      <div class="tier-header">
+        <div class="tier-name">System</div>
+        <div class="tier-price">$4<span class="small">/student/year</span></div>
+      </div>
+      <div class="tier-expand">
+        <div class="tier-divider"></div>
+        <div class="tier-details">
+          <div>All staff</div>
+          <div>All students</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p class="footnote" style="padding: 20px 0 0;">All plans include access to the Playlab platform, unlimited AI apps, dedicated workspace, and community resources.</p>
+</div>
+
+<!-- ─── FAQS ─── -->
+<div class="faq-section">
+  <h2>FAQs</h2>
+  <details class="faq">
+    <summary>What's the difference between Team, Site, and System licensing?</summary>
+    <div class="answer"><strong>Team</strong> is for small groups (1-10 users) who want to build AI apps with limited student access. <strong>Site</strong> is for single schools or organizations with all staff and optionally all students. <strong>System</strong> is for district-wide or multi-site deployment with volume discounts.</div>
+  </details>
+  <details class="faq">
+    <summary>What are Learning Services?</summary>
+    <div class="answer">Learning Services are professional development and implementation support offerings that help organizations build AI literacy, create custom applications, and develop sustainable innovation practices. These can be added to any licensing tier.</div>
+  </details>
+  <details class="faq">
+    <summary>Do you offer pilot pricing?</summary>
+    <div class="answer">Yes. Most partners begin with a smaller pilot or cohort and receive 50–90% discounted pricing in Years 1–2 as adoption ramps. Contact us to discuss your pilot timeline and budget.</div>
+  </details>
+  <details class="faq">
+    <summary>Is Playlab safe for students?</summary>
+    <div class="answer">Yes. Playlab has been vetted by NYC Public Schools and California Community Colleges. We feature best-in-class AI safety with agentic moderation, content filtering, and full admin oversight.</div>
+  </details>
+</div>
+
+<!-- ─── FOOTER NOTE ─── -->
+<p class="footnote">*All plans include soft caps on AI usage to ensure sustainable access for all partners. We work collaboratively with you to scale usage as adoption grows.</p>
+
+<!-- ─── FUNDING NOTE ─── -->
+<div style="max-width: 900px; margin: 0 auto; padding: 32px 24px 64px; text-align: center;">
+  <p style="font-size: 14px; font-weight: 400; color: var(--slate-700); line-height: 1.6;">
+    <strong>Current Funding Opportunities:</strong> Playlab is committed to increasing AI agency for all. We encourage schools and systems to explore philanthropic partnerships to support their work where possible.
+  </p>
+</div>
+
+</body>
+</html>
