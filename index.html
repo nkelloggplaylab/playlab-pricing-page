@@ -361,6 +361,38 @@
       margin: 0 auto;
     }
 
+    /* ─── FLOATING CTA BUTTON ─── */
+    .floating-cta {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      padding: 16px 32px;
+      background: var(--sky-500);
+      color: white;
+      font-family: 'Lexend', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .floating-cta:hover {
+      background: var(--sky-600);
+      box-shadow: 0 6px 30px rgba(14, 165, 233, 0.6);
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    .floating-cta:active {
+      transform: translateX(-50%) translateY(0);
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1200px) {
       .service-cards { grid-template-columns: repeat(3, 1fr); }
@@ -374,6 +406,11 @@
       .header h1 { font-size: 28px; }
       .pricing-tiers { grid-template-columns: 1fr; }
       .service-cards { grid-template-columns: 1fr; }
+      .floating-cta {
+        font-size: 14px;
+        padding: 14px 24px;
+        bottom: 24px;
+      }
     }
   </style>
 </head>
@@ -569,6 +606,9 @@
     <strong>Current Funding Opportunities:</strong> Playlab is committed to increasing AI agency for all. We encourage schools and systems to explore philanthropic partnerships to support their work where possible.
   </p>
 </div>
+
+<!-- ─── FLOATING CTA ─── -->
+<a href="mailto:hello@playlab.ai?subject=Pricing%20Inquiry" class="floating-cta">Contact Playlab to Get Started</a>
 
 </body>
 </html>
