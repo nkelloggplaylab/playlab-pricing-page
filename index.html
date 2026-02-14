@@ -114,6 +114,11 @@
       box-shadow: 0 2px 12px rgba(14, 165, 233, 0.3);
     }
 
+    .component-badge.software {
+      background: var(--emerald-500);
+      box-shadow: 0 2px 12px rgba(16, 185, 129, 0.3);
+    }
+
     .plus-sign {
       font-size: 24px;
       font-weight: 700;
@@ -132,7 +137,21 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 32px;
-      color: var(--slate-900);
+      color: var(--emerald-500);
+      position: relative;
+      padding-bottom: 16px;
+    }
+
+    .pricing-compact h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--emerald-500);
+      border-radius: 2px;
     }
 
     .pricing-compact {
@@ -261,7 +280,21 @@
       font-weight: 700;
       text-align: center;
       margin-bottom: 32px;
-      color: var(--slate-900);
+      color: var(--sky-600);
+      position: relative;
+      padding-bottom: 16px;
+    }
+
+    .services-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--sky-500);
+      border-radius: 2px;
     }
 
     .services-section .subtitle {
@@ -487,7 +520,7 @@
   <div class="model-components">
     <div class="component-badge">Learning Services</div>
     <div class="plus-sign">+</div>
-    <div class="component-badge">Software</div>
+    <div class="component-badge software">Software</div>
   </div>
 </div>
 
