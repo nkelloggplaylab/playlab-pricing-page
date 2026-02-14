@@ -77,6 +77,49 @@
       margin: 0 auto;
     }
 
+    /* ─── PHILOSOPHY SECTION ─── */
+    .philosophy-section {
+      max-width: 900px;
+      margin: 0 auto 64px;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .philosophy-text {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--slate-700);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .model-components {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .component-badge {
+      background: var(--sky-500);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Lexend', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 12px rgba(14, 165, 233, 0.3);
+    }
+
+    .plus-sign {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--slate-400);
+    }
+
     /* ─── COMPACT PRICING SECTION ─── */
     .pricing-compact {
       max-width: 900px;
@@ -410,6 +453,16 @@
         padding: 14px 24px;
         bottom: 24px;
       }
+      .philosophy-text {
+        font-size: 16px;
+      }
+      .component-badge {
+        font-size: 14px;
+        padding: 12px 24px;
+      }
+      .plus-sign {
+        font-size: 20px;
+      }
     }
   </style>
 </head>
@@ -426,6 +479,16 @@
   </div>
   <h1>AI Agency for Learning Organizations</h1>
   <p>As a non-profit, Playlab provides AI-safe software and rigorous learning services to enable AI agency for all.</p>
+</div>
+
+<!-- ─── PHILOSOPHY SECTION ─── -->
+<div class="philosophy-section">
+  <p class="philosophy-text">We believe that AI agency requires both access and guided exploration. The Playlab model includes both:</p>
+  <div class="model-components">
+    <div class="component-badge">Learning Services</div>
+    <div class="plus-sign">+</div>
+    <div class="component-badge">Software</div>
+  </div>
 </div>
 
 <!-- ─── LEARNING SERVICES ─── -->
