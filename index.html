@@ -160,7 +160,7 @@
 
     .pricing-tiers {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-bottom: 16px;
     }
@@ -631,21 +631,38 @@
       <div class="tier-expand">
         <div class="tier-divider"></div>
         <div class="tier-details">
+          <div>$200/user/year</div>
           <div>1-10 users</div>
           <div>Up to 100 students per user</div>
         </div>
       </div>
     </div>
 
-    <!-- Site -->
-    <div class="tier-box highlighted collapsed" onclick="this.classList.toggle('collapsed')">
+    <!-- Site: AI Literacy -->
+    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
       <div class="tier-header">
-        <div class="tier-name">Site</div>
-        <div class="tier-price">$3,000<span class="small">/site/year</span></div>
+        <div class="tier-name">Site: AI Literacy</div>
+        <div class="tier-price">$100<span class="small">/site/month</span></div>
       </div>
       <div class="tier-expand">
         <div class="tier-divider"></div>
         <div class="tier-details">
+          <div>$1,000/site/year</div>
+          <div>All staff</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site: Full Use -->
+    <div class="tier-box highlighted collapsed" onclick="this.classList.toggle('collapsed')">
+      <div class="tier-header">
+        <div class="tier-name">Site: Full Use</div>
+        <div class="tier-price">$300<span class="small">/site/month</span></div>
+      </div>
+      <div class="tier-expand">
+        <div class="tier-divider"></div>
+        <div class="tier-details">
+          <div>$3,000/site/year</div>
           <div>All staff</div>
           <div>All students</div>
         </div>
@@ -662,7 +679,7 @@
         <div class="tier-divider"></div>
         <div class="tier-details">
           <div>All staff</div>
-          <div>All students</div>
+          <div>All students (min: 1K)</div>
         </div>
       </div>
     </div>
