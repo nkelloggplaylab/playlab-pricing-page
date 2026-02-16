@@ -161,111 +161,76 @@
     .pricing-tiers {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 20px;
       margin-bottom: 16px;
     }
 
     .tier-box {
-      background: var(--slate-50);
+      background: white;
       border: 2px solid var(--slate-200);
-      border-radius: 12px;
-      padding: 12px 14px;
+      border-radius: 16px;
+      padding: 24px 20px;
       transition: all 0.2s;
-      cursor: pointer;
     }
 
     .tier-box:hover {
-      border-color: var(--sky-400);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+      border-color: var(--emerald-400);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
 
     .tier-box.highlighted {
-      border-color: var(--sky-500);
-      background: var(--sky-50);
-    }
-
-    .tier-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
-    .tier-header::after {
-      content: '';
-      position: absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%) rotate(0deg);
-      width: 16px;
-      height: 16px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
-      transition: transform 0.3s ease;
-    }
-
-    .tier-box:not(.collapsed) .tier-header::after {
-      transform: translateY(-50%) rotate(180deg);
+      border-color: var(--emerald-500);
+      background: var(--emerald-50);
     }
 
     .tier-name {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--slate-900);
-      margin-bottom: 6px;
+      margin-bottom: 16px;
       text-align: center;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .tier-price {
-      font-size: 20px;
+    .tier-pricing {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .tier-price-main {
+      font-size: 28px;
       font-weight: 700;
-      color: var(--sky-600);
-      margin-bottom: 0;
-      text-align: center;
-      line-height: 1.2;
+      color: var(--emerald-600);
+      margin-bottom: 4px;
     }
 
-    .tier-price .small {
-      font-size: 11px;
+    .tier-price-main .small {
+      font-size: 14px;
       font-weight: 400;
       color: var(--slate-500);
     }
 
-    .tier-expand {
-      max-height: 200px;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .tier-box.collapsed .tier-expand {
-      max-height: 0;
-    }
-
-    .tier-divider {
-      height: 1px;
-      background: var(--slate-200);
-      margin: 6px 0;
+    .tier-price-alt {
+      font-size: 14px;
+      color: var(--slate-600);
+      font-weight: 400;
     }
 
     .tier-details {
-      font-size: 11px;
-      color: var(--slate-600);
-      line-height: 1.3;
+      font-size: 13px;
+      color: var(--slate-700);
+      line-height: 1.6;
     }
 
     .tier-details > div {
-      margin: 2px 0;
+      margin: 8px 0;
       text-align: center;
-    }
-
-    .tier-option {
-      font-size: 11px;
-      color: var(--slate-700);
-      margin: 3px 0;
-      text-align: center;
-      line-height: 1.3;
     }
 
     /* ─── SERVICE CARDS ─── */
@@ -623,64 +588,54 @@
   <div class="pricing-tiers">
 
     <!-- Team -->
-    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
-      <div class="tier-header">
-        <div class="tier-name">Team</div>
-        <div class="tier-price">$25<span class="small">/user/month</span></div>
+    <div class="tier-box">
+      <div class="tier-name">Team</div>
+      <div class="tier-pricing">
+        <div class="tier-price-main">$25<span class="small">/user/month</span></div>
+        <div class="tier-price-alt">$200/user/year</div>
       </div>
-      <div class="tier-expand">
-        <div class="tier-divider"></div>
-        <div class="tier-details">
-          <div>$200/user/year</div>
-          <div>1-10 users</div>
-          <div>Up to 100 students per user</div>
-        </div>
+      <div class="tier-details">
+        <div>1-10 users</div>
+        <div>Up to 100 students per user</div>
       </div>
     </div>
 
     <!-- Site: AI Literacy -->
-    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
-      <div class="tier-header">
-        <div class="tier-name">Site: AI Literacy</div>
-        <div class="tier-price">$100<span class="small">/site/month</span></div>
+    <div class="tier-box">
+      <div class="tier-name">Site: AI Literacy</div>
+      <div class="tier-pricing">
+        <div class="tier-price-main">$100<span class="small">/site/month</span></div>
+        <div class="tier-price-alt">$1,000/site/year</div>
       </div>
-      <div class="tier-expand">
-        <div class="tier-divider"></div>
-        <div class="tier-details">
-          <div>$1,000/site/year</div>
-          <div>All staff</div>
-        </div>
+      <div class="tier-details">
+        <div>All staff</div>
+        <div>Focus: AI literacy training</div>
       </div>
     </div>
 
     <!-- Site: Full Use -->
-    <div class="tier-box highlighted collapsed" onclick="this.classList.toggle('collapsed')">
-      <div class="tier-header">
-        <div class="tier-name">Site: Full Use</div>
-        <div class="tier-price">$300<span class="small">/site/month</span></div>
+    <div class="tier-box highlighted">
+      <div class="tier-name">Site: Full Use</div>
+      <div class="tier-pricing">
+        <div class="tier-price-main">$300<span class="small">/site/month</span></div>
+        <div class="tier-price-alt">$3,000/site/year</div>
       </div>
-      <div class="tier-expand">
-        <div class="tier-divider"></div>
-        <div class="tier-details">
-          <div>$3,000/site/year</div>
-          <div>All staff</div>
-          <div>All students</div>
-        </div>
+      <div class="tier-details">
+        <div>All staff</div>
+        <div>All students</div>
       </div>
     </div>
 
     <!-- System -->
-    <div class="tier-box collapsed" onclick="this.classList.toggle('collapsed')">
-      <div class="tier-header">
-        <div class="tier-name">System</div>
-        <div class="tier-price">$4<span class="small">/student/year</span></div>
+    <div class="tier-box">
+      <div class="tier-name">System</div>
+      <div class="tier-pricing">
+        <div class="tier-price-main">$4<span class="small">/student/year</span></div>
       </div>
-      <div class="tier-expand">
-        <div class="tier-divider"></div>
-        <div class="tier-details">
-          <div>All staff</div>
-          <div>All students (min: 1K)</div>
-        </div>
+      <div class="tier-details">
+        <div>All staff</div>
+        <div>All students</div>
+        <div>Minimum 1,000 students</div>
       </div>
     </div>
 
