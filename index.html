@@ -127,7 +127,7 @@
 
     /* ─── COMPACT PRICING SECTION ─── */
     .pricing-compact {
-      max-width: 900px;
+      max-width: 1400px;
       margin: 0 auto 72px;
       padding: 0 24px;
     }
@@ -182,6 +182,31 @@
     .tier-box.highlighted {
       border-color: var(--emerald-500);
       background: var(--emerald-50);
+    }
+
+    .tier-box.site-tier {
+      border-color: var(--sky-300);
+      background: var(--sky-50);
+      position: relative;
+    }
+
+    .tier-box.site-tier::before {
+      content: 'SITE';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--sky-500);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+
+    .tier-box.site-tier:hover {
+      border-color: var(--sky-500);
     }
 
     .tier-name {
@@ -636,8 +661,8 @@
     </div>
 
     <!-- Site: AI Literacy -->
-    <div class="tier-box">
-      <div class="tier-name">Site: AI Literacy</div>
+    <div class="tier-box site-tier">
+      <div class="tier-name">AI Literacy</div>
       <div class="tier-pricing">
         <div class="tier-price-main">$100<span class="small">/site/month</span></div>
         <div class="tier-price-alt">$1,000/site/year</div>
@@ -649,8 +674,8 @@
     </div>
 
     <!-- Site: Full Use -->
-    <div class="tier-box highlighted">
-      <div class="tier-name">Site: Full Use</div>
+    <div class="tier-box site-tier highlighted">
+      <div class="tier-name">Full Use</div>
       <div class="tier-pricing">
         <div class="tier-price-main">$300<span class="small">/site/month</span></div>
         <div class="tier-price-alt">$3,000/site/year</div>
