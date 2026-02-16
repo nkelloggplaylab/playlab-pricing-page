@@ -185,28 +185,26 @@
     }
 
     .tier-box.site-tier {
-      border-color: var(--sky-300);
-      background: var(--sky-50);
       position: relative;
     }
 
     .tier-box.site-tier::before {
-      content: 'SITE';
+      content: '';
       position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--sky-500);
-      color: white;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      padding: 4px 12px;
-      border-radius: 12px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--sky-400);
+      border-radius: 16px 16px 0 0;
     }
 
-    .tier-box.site-tier:hover {
-      border-color: var(--sky-500);
+    .tier-box.site-tier .tier-name::after {
+      content: '(Site)';
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--slate-500);
+      margin-left: 6px;
     }
 
     .tier-name {
