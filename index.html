@@ -48,7 +48,11 @@
     .header {
       background: linear-gradient(180deg, var(--cream) 0%, #fff 100%);
       text-align: center;
-      padding: 60px 24px 56px;
+      padding: 40px 24px 36px;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     .logo {
@@ -82,8 +86,8 @@
     /* ─── PHILOSOPHY SECTION ─── */
     .philosophy-section {
       max-width: 900px;
-      margin: 0 auto 80px;
-      padding: 48px 24px;
+      margin: 0 auto 48px;
+      padding: 32px 24px;
       text-align: center;
     }
 
@@ -118,11 +122,24 @@
       letter-spacing: 0.8px;
       text-transform: uppercase;
       box-shadow: 0 4px 16px rgba(14, 165, 233, 0.25);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .component-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.35);
     }
 
     .component-badge.software {
       background: var(--emerald-500);
       box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25);
+    }
+
+    .component-badge.software:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
     }
 
     .plus-sign {
@@ -209,6 +226,12 @@
       justify-content: center;
       font-size: 20px;
       font-weight: 700;
+    }
+
+    .tier-box.selected .tier-price-main,
+    .tier-box.selected .tier-option-price-main {
+      color: var(--emerald-600) !important;
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
     }
 
     .tier-box.highlighted {
@@ -424,6 +447,11 @@
       box-shadow: 0 0 0 3px var(--sky-500);
     }
 
+    .service-card.selected .description + div p {
+      color: var(--emerald-400) !important;
+      text-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+
     .service-card.selected::after {
       content: '✓';
       position: absolute;
@@ -635,14 +663,14 @@
   <p class="philosophy-text">We believe that AI agency requires both access and guided exploration.</p>
   <p class="philosophy-text">The Playlab model includes both:</p>
   <div class="model-components">
-    <div class="component-badge">Learning Services</div>
+    <a href="#learning-services" class="component-badge">Learning Services</a>
     <div class="plus-sign">+</div>
-    <div class="component-badge software">Software</div>
+    <a href="#software" class="component-badge software">Software</a>
   </div>
 </div>
 
 <!-- ─── LEARNING SERVICES ─── -->
-<div class="services-section">
+<div class="services-section" id="learning-services">
   <h2>Learning Services</h2>
   <p style="text-align: center; font-size: 13px; color: var(--slate-500); margin-bottom: 32px;">All prices estimated. See below for transparent pricing details.<br>All learning services require software licenses as outlined below.</p>
   <div class="service-cards">
@@ -734,7 +762,7 @@
 </div>
 
 <!-- ─── COMPACT PRICING ─── -->
-<div class="pricing-compact">
+<div class="pricing-compact" id="software">
   <h2>Software</h2>
   <div class="pricing-tiers">
 
