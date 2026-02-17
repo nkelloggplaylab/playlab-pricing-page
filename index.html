@@ -171,12 +171,37 @@
       border-radius: 16px;
       padding: 24px 20px;
       transition: all 0.2s;
+      cursor: pointer;
+      position: relative;
     }
 
     .tier-box:hover {
       border-color: var(--emerald-400);
       transform: translateY(-4px);
       box-shadow: 0 8px 24px rgba(0,0,0,.08);
+    }
+
+    .tier-box.selected {
+      border-color: var(--emerald-600);
+      background: var(--emerald-50);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+
+    .tier-box.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: var(--emerald-600);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
     }
 
     .tier-box.highlighted {
@@ -378,8 +403,35 @@
       transition: transform 0.2s;
     }
 
+    .service-card {
+      cursor: pointer;
+      position: relative;
+    }
+
     .service-card:hover {
       transform: translateY(-4px);
+    }
+
+    .service-card.selected {
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 3px var(--sky-500);
+    }
+
+    .service-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: white;
+      color: var(--emerald-600);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
     }
 
     .service-card-icon {
@@ -751,7 +803,8 @@
   </div>
 
   <div style="text-align: center; margin-top: 32px;">
-    <a href="mailto:hello@playlab.ai?subject=Partnership%20Inquiry" style="display: inline-block; padding: 16px 40px; background: var(--emerald-500); color: white; font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);" onmouseover="this.style.background='#059669'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 24px rgba(16, 185, 129, 0.4)';" onmouseout="this.style.background='#10b981'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 16px rgba(16, 185, 129, 0.3)';">Contact Our Partnership Team</a>
+    <a href="mailto:hello@playlab.ai?subject=Partnership%20Inquiry" id="contactButton" style="display: inline-block; padding: 16px 40px; background: var(--slate-300); color: white; font-family: 'Lexend', sans-serif; font-size: 16px; font-weight: 600; border-radius: 50px; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(148, 163, 184, 0.3); pointer-events: none; opacity: 0.6;">Contact Our Partnership Team</a>
+    <p id="selectionStatus" style="margin-top: 16px; font-size: 14px; color: var(--slate-600); font-family: 'Lexend', sans-serif;">Select at least one Learning Service and one Software option to continue</p>
   </div>
 
   <p class="footnote" style="padding: 20px 0 0;">All plans include access to the Playlab platform, unlimited AI apps, dedicated workspace, and community resources.</p>
@@ -791,6 +844,92 @@
 
 <!-- ─── FLOATING CTA ─── -->
 <a href="mailto:hello@playlab.ai?subject=Pricing%20Inquiry" class="floating-cta">Contact Playlab to Get Started</a>
+
+<script>
+// Selection state
+let selectedLearningServices = new Set();
+let selectedSoftware = null;
+
+// Add click handlers to learning service cards
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const serviceId = this.querySelector('h3').textContent;
+
+    if (this.classList.contains('selected')) {
+      this.classList.remove('selected');
+      selectedLearningServices.delete(serviceId);
+    } else {
+      this.classList.add('selected');
+      selectedLearningServices.add(serviceId);
+    }
+
+    updateContactButton();
+  });
+});
+
+// Add click handlers to software tier cards
+document.querySelectorAll('.tier-box').forEach(card => {
+  card.addEventListener('click', function() {
+    const tierName = this.querySelector('.tier-name').textContent;
+
+    // Remove selection from all other tier boxes
+    document.querySelectorAll('.tier-box').forEach(box => {
+      box.classList.remove('selected');
+    });
+
+    // Toggle this one
+    if (selectedSoftware === tierName) {
+      selectedSoftware = null;
+    } else {
+      this.classList.add('selected');
+      selectedSoftware = tierName;
+    }
+
+    updateContactButton();
+  });
+});
+
+function updateContactButton() {
+  const button = document.getElementById('contactButton');
+  const status = document.getElementById('selectionStatus');
+
+  // Check if requirements are met
+  const hasLearningService = selectedLearningServices.size > 0;
+  const hasSoftware = selectedSoftware !== null;
+
+  if (hasLearningService && hasSoftware) {
+    // Enable button
+    button.style.background = '#10b981';
+    button.style.pointerEvents = 'auto';
+    button.style.opacity = '1';
+    button.style.boxShadow = '0 4px 16px rgba(16, 185, 129, 0.3)';
+    status.textContent = '✓ Ready to contact! Click the button above to get started.';
+    status.style.color = '#10b981';
+    status.style.fontWeight = '600';
+
+    // Update href with selections
+    const servicesList = Array.from(selectedLearningServices).join(', ');
+    const subject = `Partnership Inquiry - ${selectedSoftware} + ${servicesList}`;
+    button.href = `mailto:hello@playlab.ai?subject=${encodeURIComponent(subject)}`;
+  } else {
+    // Disable button
+    button.style.background = '#cbd5e1';
+    button.style.pointerEvents = 'none';
+    button.style.opacity = '0.6';
+    button.style.boxShadow = '0 4px 16px rgba(148, 163, 184, 0.3)';
+
+    if (!hasLearningService && !hasSoftware) {
+      status.textContent = 'Select at least one Learning Service and one Software option to continue';
+    } else if (!hasLearningService) {
+      status.textContent = 'Select at least one Learning Service to continue';
+    } else {
+      status.textContent = 'Select a Software option to continue';
+    }
+    status.style.color = '#64748b';
+    status.style.fontWeight = '400';
+  }
+}
+</script>
 
 </body>
 </html>
