@@ -190,8 +190,7 @@
     }
 
     .tier-box {
-      background: white;
-      border: 2px solid var(--slate-200);
+      background: var(--card-dark);
       border-radius: 16px;
       padding: 24px 20px;
       transition: all 0.2s;
@@ -199,14 +198,12 @@
     }
 
     .tier-box:hover {
-      border-color: var(--emerald-400);
       transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      box-shadow: 0 8px 28px rgba(0,0,0,.35);
     }
 
     .tier-box.highlighted {
-      border-color: var(--emerald-500);
-      background: var(--emerald-50);
+      background: var(--card-dark-alt);
     }
 
     .tier-box.multi-option {
@@ -216,7 +213,7 @@
     .multi-option .tier-name {
       margin-bottom: 20px;
       padding-bottom: 16px;
-      border-bottom: 2px solid var(--slate-200);
+      border-bottom: 2px solid rgba(255,255,255,0.15);
     }
 
     .tier-options {
@@ -227,15 +224,15 @@
 
     .tier-option-card {
       padding: 16px;
-      border: 1px solid var(--slate-200);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 12px;
-      background: var(--slate-50);
+      background: rgba(255,255,255,0.06);
     }
 
     .tier-option-name {
       font-size: 14px;
       font-weight: 600;
-      color: var(--slate-900);
+      color: #fff;
       margin-bottom: 12px;
       text-align: center;
     }
@@ -244,31 +241,31 @@
       text-align: center;
       margin-bottom: 12px;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--slate-200);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
     .tier-option-price-main {
       font-size: 20px;
       font-weight: 700;
-      color: var(--emerald-600);
+      color: var(--emerald-400);
       margin-bottom: 2px;
     }
 
     .tier-option-price-main .small {
       font-size: 11px;
       font-weight: 400;
-      color: var(--slate-500);
+      color: rgba(255,255,255,0.55);
     }
 
     .tier-option-price-alt {
       font-size: 12px;
-      color: var(--slate-600);
+      color: rgba(255,255,255,0.65);
       font-weight: 700;
     }
 
     .tier-option-details {
       font-size: 12px;
-      color: var(--slate-700);
+      color: var(--slate-300);
       line-height: 1.5;
     }
 
@@ -280,7 +277,7 @@
     .tier-name {
       font-size: 22px;
       font-weight: 700;
-      color: var(--slate-900);
+      color: #fff;
       margin-bottom: 16px;
       text-align: center;
       min-height: 44px;
@@ -293,25 +290,25 @@
       text-align: center;
       margin-bottom: 20px;
       padding-bottom: 20px;
-      border-bottom: 1px solid var(--slate-200);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
     }
 
     .tier-price-main {
       font-size: 28px;
       font-weight: 700;
-      color: var(--emerald-600);
+      color: var(--emerald-400);
       margin-bottom: 4px;
     }
 
     .tier-price-main .small {
       font-size: 14px;
       font-weight: 400;
-      color: var(--slate-500);
+      color: rgba(255,255,255,0.55);
     }
 
     .tier-price-alt {
       font-size: 14px;
-      color: var(--slate-600);
+      color: rgba(255,255,255,0.65);
       font-weight: 700;
     }
 
@@ -340,7 +337,7 @@
 
     .tier-details {
       font-size: 13px;
-      color: var(--slate-700);
+      color: var(--slate-300);
       line-height: 1.6;
     }
 
@@ -396,19 +393,19 @@
     }
 
     .service-card {
-      background: var(--card-dark);
+      background: white;
+      border: 2px solid var(--slate-200);
       border-radius: 20px;
       padding: 32px 28px;
-      color: #fff;
-      transition: transform 0.2s;
-    }
-
-    .service-card {
+      color: var(--slate-800);
+      transition: all 0.2s;
       position: relative;
     }
 
     .service-card:hover {
+      border-color: var(--sky-400);
       transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
     }
 
     .service-card-icon {
@@ -421,13 +418,13 @@
       font-size: 22px;
       font-weight: 700;
       margin-bottom: 12px;
-      color: #fff;
+      color: var(--slate-900);
     }
 
     .service-card .description {
       font-size: 14px;
       font-weight: 300;
-      color: var(--slate-300);
+      color: var(--slate-600);
       line-height: 1.6;
     }
 
@@ -441,16 +438,16 @@
       font-weight: 600;
       text-align: center;
       cursor: pointer;
-      border: 2px solid rgba(255,255,255,0.3);
+      border: 2px solid var(--sky-200);
       background: transparent;
-      color: #fff;
+      color: var(--sky-600);
       transition: all 0.2s;
       text-decoration: none;
     }
 
     .service-card .cta:hover {
-      border-color: rgba(255,255,255,0.6);
-      background: rgba(255,255,255,0.1);
+      border-color: var(--sky-400);
+      background: var(--sky-50);
     }
 
     /* ─── TRANSPARENT PRICING ─── */
@@ -460,20 +457,55 @@
       padding: 0 24px;
     }
 
-    .transparent-pricing h2 {
-      font-size: 28px;
+    .pricing-disclosure {
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .pricing-disclosure > summary {
+      padding: 20px 28px;
+      font-size: 20px;
       font-weight: 700;
-      text-align: center;
-      margin-bottom: 8px;
       color: var(--slate-900);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--slate-50);
+      user-select: none;
+    }
+
+    .pricing-disclosure > summary:hover {
+      background: var(--slate-100);
+    }
+
+    .pricing-disclosure > summary::-webkit-details-marker { display: none; }
+
+    .pricing-disclosure > summary::after {
+      content: '';
+      width: 22px;
+      height: 22px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .pricing-disclosure[open] > summary::after { transform: rotate(180deg); }
+
+    .pricing-disclosure-body {
+      padding: 28px;
     }
 
     .transparent-pricing .section-note {
-      text-align: center;
       font-size: 14px;
       color: var(--slate-500);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       font-style: italic;
+      line-height: 1.6;
     }
 
     .pricing-table-group {
@@ -802,69 +834,73 @@
   </div>
 
   <p class="footnote" style="padding: 20px 0 0;">All plans include access to the Playlab platform, unlimited AI apps, dedicated workspace, and community resources.</p>
-  <p style="text-align: center; font-size: 14px; color: var(--slate-700); margin-top: 16px;">Multi-year discounts available</p>
+  <p style="text-align: center; font-size: 14px; color: var(--slate-500); margin-top: 16px;">Multi-year discounts available</p>
 </div>
 
 <!-- ─── TRANSPARENT PRICING ─── -->
 <div class="transparent-pricing">
-  <h2>Transparent System Pricing</h2>
-  <p class="section-note">Most partners begin with a smaller pilot or cohort and receive 50–90% discounted pricing in Years 1–2 as adoption ramps. Enterprise plans start at $6,000.</p>
+  <details class="pricing-disclosure">
+    <summary>Transparent System Pricing</summary>
+    <div class="pricing-disclosure-body">
+      <p class="section-note">Most partners begin with a smaller pilot or cohort and receive 50–90% discounted pricing in Years 1–2 as adoption ramps. Enterprise plans start at $6,000.</p>
 
-  <div class="pricing-table-group">
-    <h3>K–12</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Tier</th>
-          <th>Student Enrollment</th>
-          <th>Price / Student / Year</th>
-          <th>Monthly AI Credits</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>1–9,999</td><td class="price">$4.00</td><td>2M Tokens</td></tr>
-        <tr><td>2</td><td>10,000–24,999</td><td class="price">$3.50</td><td>4M Tokens</td></tr>
-        <tr><td>3</td><td>25,000–49,999</td><td class="price">$3.00</td><td>6M Tokens</td></tr>
-        <tr><td>4</td><td>50,000+</td><td class="custom">Custom</td><td>Custom</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="pricing-table-group">
-    <h3>Higher Ed</h3>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Tier</th>
-          <th>Student Enrollment</th>
-          <th>Price / Student / Year</th>
-          <th>Monthly AI Credits</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>1–9,999</td><td class="price">$20.00</td><td>2M Tokens</td></tr>
-        <tr><td>2</td><td>10,000–24,999</td><td class="price">$18.00</td><td>4M Tokens</td></tr>
-        <tr><td>3</td><td>25,000–49,999</td><td class="price">$16.00</td><td>6M Tokens</td></tr>
-        <tr><td>4</td><td>50,000+</td><td class="custom">Custom</td><td>Custom</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="pricing-table-group">
-    <h3>Other</h3>
-    <div class="other-pricing">
-      <div class="other-pricing-card">
-        <div class="label">Business</div>
-        <div class="price">$50</div>
-        <div class="unit">per user / year</div>
+      <div class="pricing-table-group">
+        <h3>K–12</h3>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Student Enrollment</th>
+              <th>Price / Student / Year</th>
+              <th>Monthly AI Credits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>1–9,999</td><td class="price">$4.00</td><td>2M Tokens</td></tr>
+            <tr><td>2</td><td>10,000–24,999</td><td class="price">$3.50</td><td>4M Tokens</td></tr>
+            <tr><td>3</td><td>25,000–49,999</td><td class="price">$3.00</td><td>6M Tokens</td></tr>
+            <tr><td>4</td><td>50,000+</td><td class="custom">Custom</td><td>Custom</td></tr>
+          </tbody>
+        </table>
       </div>
-      <div class="other-pricing-card">
-        <div class="label">Non-Profit</div>
-        <div class="price">$25</div>
-        <div class="unit">per user / year</div>
+
+      <div class="pricing-table-group">
+        <h3>Higher Ed</h3>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Student Enrollment</th>
+              <th>Price / Student / Year</th>
+              <th>Monthly AI Credits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>1–9,999</td><td class="price">$20.00</td><td>2M Tokens</td></tr>
+            <tr><td>2</td><td>10,000–24,999</td><td class="price">$18.00</td><td>4M Tokens</td></tr>
+            <tr><td>3</td><td>25,000–49,999</td><td class="price">$16.00</td><td>6M Tokens</td></tr>
+            <tr><td>4</td><td>50,000+</td><td class="custom">Custom</td><td>Custom</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pricing-table-group">
+        <h3>Other</h3>
+        <div class="other-pricing">
+          <div class="other-pricing-card">
+            <div class="label">Business</div>
+            <div class="price">$50</div>
+            <div class="unit">per user / year</div>
+          </div>
+          <div class="other-pricing-card">
+            <div class="label">Non-Profit</div>
+            <div class="price">$25</div>
+            <div class="unit">per user / year</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </details>
 </div>
 
 <!-- ─── LEARNING SERVICES ─── -->
@@ -885,8 +921,8 @@
       <p class="description" style="margin-bottom: 12px;">Train up staff/team on AI</p>
       <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Hands-on, facilitated learning experiences (flexible format)</p>
       <p class="description"><strong>Results in:</strong> Increased AI agency (knowledge, skills, outlook) + AI app showcase + organization AI foundation</p>
-      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <p style="text-align: center;"><span style="font-size: 13px; color: rgba(255,255,255,0.7);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: white;">$7,500</span></p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+        <p style="text-align: center;"><span style="font-size: 13px; color: var(--slate-500);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: var(--emerald-600);">$7,500</span></p>
       </div>
     </div>
 
@@ -901,8 +937,8 @@
       <p class="description" style="margin-bottom: 12px;">Bring AI learning to students</p>
       <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Teacher training & student curriculum (multiple formats)</p>
       <p class="description"><strong>Results in:</strong> Increased AI agency + shared discourse around AI + student app showcase</p>
-      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <p style="text-align: center;"><span style="font-size: 13px; color: rgba(255,255,255,0.7);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: white;">$10,000</span></p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+        <p style="text-align: center;"><span style="font-size: 13px; color: var(--slate-500);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: var(--emerald-600);">$10,000</span></p>
       </div>
     </div>
 
@@ -918,8 +954,8 @@
       <p class="description" style="margin-bottom: 12px;">Build shared, scalable AI solutions</p>
       <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Year-long collaboration to design, co-build, and scale custom AI solutions for selected challenge areas</p>
       <p class="description"><strong>Results in:</strong> Shared collection of custom AI applications + increased internal capacity to build independently</p>
-      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <p style="text-align: center;"><span style="font-size: 13px; color: rgba(255,255,255,0.7);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: white;">$25,000</span></p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+        <p style="text-align: center;"><span style="font-size: 13px; color: var(--slate-500);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: var(--emerald-600);">$25,000</span></p>
       </div>
     </div>
 
@@ -935,8 +971,8 @@
       <p class="description" style="margin-bottom: 12px;">Build culture and systems for ongoing AI innovation</p>
       <p class="description" style="margin-bottom: 12px;"><strong>What we do:</strong> Year-long collaboration to establish culture for continual AI innovation</p>
       <p class="description"><strong>Results in:</strong> Individual staff or team proof points + systems for continual educator-led AI innovation</p>
-      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <p style="text-align: center;"><span style="font-size: 13px; color: rgba(255,255,255,0.7);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: white;">$25,000</span></p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+        <p style="text-align: center;"><span style="font-size: 13px; color: var(--slate-500);">Starting at</span><br><span style="font-size: 24px; font-weight: 700; color: var(--emerald-600);">$25,000</span></p>
       </div>
     </div>
 
@@ -951,8 +987,8 @@
       </svg>
       <h3>Custom App Building</h3>
       <p class="description" style="margin-bottom: 12px;">Design, launch, and implementation support for fully custom apps based on specific context</p>
-      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <p style="font-size: 24px; font-weight: 700; color: white; text-align: center;">Custom Quote</p>
+      <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--slate-200);">
+        <p style="font-size: 24px; font-weight: 700; color: var(--emerald-600); text-align: center;">Custom Quote</p>
       </div>
     </div>
 
